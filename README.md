@@ -1,81 +1,214 @@
-# Official Flutter packages for [Stream Chat](https://getstream.io/chat/sdk/flutter/)
+# Official Flutter SDK for [Stream Chat](https://getstream.io/chat/)
 
 ![](https://raw.githubusercontent.com/GetStream/stream-chat-flutter/master/images/sdk_hero_v4.png)
 
+> The official Flutter components for Stream Chat, a service for
+> building chat applications.
+
+[![Pub](https://img.shields.io/pub/v/stream_chat_flutter.svg)](https://pub.dartlang.org/packages/stream_chat_flutter)
+![](https://img.shields.io/badge/platform-flutter%20%7C%20flutter%20web-ff69b4.svg?style=flat-square)
 ![CI](https://github.com/GetStream/stream-chat-flutter/workflows/stream_flutter_workflow/badge.svg?branch=master)
-[![Melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos)
 
 **Quick Links**
 
 - [Register](https://getstream.io/chat/trial/) to get an API key for Stream Chat
-- [Flutter Chat SDK Tutorial](https://getstream.io/chat/flutter/tutorial/)
+- [Flutter Chat Tutorial](https://getstream.io/chat/flutter/tutorial/) 
 - [Chat UI Kit](https://getstream.io/chat/ui-kit/)
-- [Sample apps](https://github.com/GetStream/flutter-samples)
-
-This repository contains code for our [Dart](https://dart.dev/) and [Flutter](https://flutter.dev/) chat clients.
-
-Stream allows developers to rapidly deploy scalable feeds and chat messaging with an industry leading 99.999% uptime SLA guarantee.
+- [UI Docs](https://getstream.io/chat/docs/sdk/flutter/stream_chat_flutter/introduction/)
+- [Chat Client Docs](https://getstream.io/chat/docs/flutter-dart/?language=dart)
 
 **V4 Migration Guide**
 
 For upgrading from V3 to V4, please refer to the [V4 Migration Guide](https://getstream.io/chat/docs/sdk/flutter/guides/migration_guide_4_0/)
 
-## Sample apps and demos 
-Our team maintains a dedicated repository for full fledged sample applications and demos. Consider checking out [GetStream/flutter-samples](https://github.com/GetStream/flutter-samples) to learn more or get started by looking at our latest [Stream Chat demo](https://github.com/GetStream/flutter-samples/tree/main/packages/stream_chat_v1). 
+### Changelog
 
-## Free for Makers
-
-Stream is free for most side and hobby projects. To qualify your project/company needs to have < 5 team members and < $10k in monthly revenue.
-For complete pricing details visit our [Chat Pricing Page](https://getstream.io/chat/pricing/)
-
-## Structure
-Stream Chat Dart is a monorepo built using [Melos](https://docs.page/invertase/melos). Individual packages can be found in the `packages` directory while configuration and top level commands can be found in `melos.yaml`. 
-
-To get started, run `bootstrap` after cloning the project. 
-
-```shell
-melos bootstrap
-```
-
-## Packages 
-We provide a variety of packages depending on the level of customization you want to achieve.
-
-### [`stream_chat`](https://github.com/GetStream/stream-chat-flutter/tree/master/packages/stream_chat)
-A pure Dart package that can be used on any Dart project. It provides a low-level client to access the Stream Chat service.
-
-### [`stream_chat_persistence`](https://github.com/GetStream/stream-chat-flutter/tree/master/packages/stream_chat_persistence)
-This package provides a persistence client for fetching and saving chat data locally. Stream Chat Persistence uses Moor as a disk cache.
-
-### [`stream_chat_flutter_core`](https://github.com/GetStream/stream-chat-flutter/tree/master/packages/stream_chat_flutter_core)
-This package provides business logic to fetch common things required for integrating Stream Chat into your application. The `core` package allows more customisation and hence provides business logic but no UI components.
-
-### [`stream_chat_flutter`](https://github.com/GetStream/stream-chat-flutter/tree/master/packages/stream_chat_flutter)
-This library includes both a low-level chat SDK and a set of reusable and customizable UI components.
-
-### [`stream_chat_localizations`](https://github.com/GetStream/stream-chat-flutter/tree/master/packages/stream_chat_localizations)
-This library includes a set of localization files for the Flutter UI components.
+Check out the [changelog on pub.dev](https://pub.dev/packages/stream_chat_flutter/changelog) to see the latest changes in the package.
 
 ## Flutter Chat Tutorial
 
 The best place to start is the [Flutter Chat Tutorial](https://getstream.io/chat/flutter/tutorial/).
 It teaches you how to use this SDK and also shows how to make frequently required changes.
 
-## Example Apps
+## Example App
 
-Every package folder includes a fully functional example with setup instructions.
+This repository includes a fully functional example app with setup instructions.
+The example is available under the [example](https://github.com/GetStream/stream-chat-flutter/tree/master/packages/stream_chat_flutter/example) folder.
 
-We also provide a set of sample apps created using the Stream Flutter SDK at [this location](https://github.com/GetStream/flutter-samples).
+## Add dependency
+Add this to your package's pubspec.yaml file, use the latest version [![Pub](https://img.shields.io/pub/v/stream_chat_flutter.svg)](https://pub.dartlang.org/packages/stream_chat_flutter)
+```yaml
+dependencies:
+ stream_chat_flutter: ^latest_version
+```
 
-## Versioning Policy
+You should then run `flutter packages get`
 
-All of the Stream Chat packages follow [semantic versioning](https://semver.org/).
+### Android
 
-See our [versioning policy documentation](https://getstream.io/chat/docs/sdk/flutter/basics/versioning_policy/) for more information.
+The package uses [`photo_manager`](https://pub.dev/packages/photo_manager) to access the device's photo library.
+Follow [this wiki](https://pub.dev/packages/photo_manager#android-10-q-29) to fulfil the Android requirements.
+You need to take additional steps if you are targeting Android 13. Read [this section](https://pub.dev/packages/photo_manager#android-13-api-33-extra-configs) for more information.
 
-## We are hiring
+### iOS
 
-We've recently closed a [\$38 million Series B funding round](https://techcrunch.com/2021/03/04/stream-raises-38m-as-its-chat-and-activity-feed-apis-power-communications-for-1b-users/) and we keep actively growing.
-Our APIs are used by more than a billion end-users, and you'll have a chance to make a huge impact on the product within a team of the strongest engineers all over the world.
+The library uses [flutter file picker plugin](https://github.com/miguelpruivo/flutter_file_picker) to pick
+files from the os.
+Follow [this wiki](https://github.com/miguelpruivo/flutter_file_picker/wiki/Setup#ios) to fulfill iOS requirements.
 
-Check out our current openings and apply via [Stream's website](https://getstream.io/team/#jobs).
+We also use [`video_player`](https://pub.dev/packages/video_player) to reproduce videos. Follow [this guide](https://pub.dev/packages/video_player#installation) to fulfill the requirements.
 
+To pick images from the camera, we use the [`image_picker`](https://pub.dev/packages/image_picker) plugin.
+Follow [these instructions](https://pub.dev/packages/image_picker#ios) to check the requirements.
+
+### Web
+
+For the web, edit your `index.html` and add the following in the `<body>` tag in order to allow the SDK to override the right-click behaviour:
+
+```html
+<body oncontextmenu="return false;">
+```
+
+### MacOS
+
+For MacOS use the [`file_selector`](https://pub.dev/packages/file_selector#macos) package.
+Follow [these instructions](https://pub.dev/packages/file_selector#macos) to check the requirements.
+
+You also need to add the following [entitlement](https://docs.flutter.dev/development/platform-integration/desktop#entitlements-and-the-app-sandbox):
+
+```xml
+<key>com.apple.security.network.client</key>
+<true/>
+```
+
+### Troubleshooting
+
+It may happen that you have some problems building the app.
+If it seems related to the [flutter file picker plugin](https://github.com/miguelpruivo/flutter_file_picker) make sure to check [this page](https://github.com/miguelpruivo/flutter_file_picker/wiki/Troubleshooting) 
+
+## Docs
+
+This package provides UI components required for integrating Stream Chat into your application.
+Alternatively, you may use the core package [`stream_chat_flutter_core`](https://github.com/GetStream/stream-chat-flutter/tree/master/packages/stream_chat_flutter_core) which allows more customisation and provides business logic but no UI components.
+If you require the maximum amount of control over the API, please use the low level client package: [`stream_chat`](https://github.com/GetStream/stream-chat-flutter/tree/master/packages/stream_chat).
+
+### UI Components
+
+These are the available Widgets that you can use to build your application UI.
+Every widget uses the `StreamChat` or `StreamChannel` widgets to manage the state and communicate with Stream services.
+
+- [StreamChannelHeader](https://getstream.io/chat/docs/sdk/flutter/stream_chat_flutter/stream_channel_header/)
+- [StreamChannelListView](https://getstream.io/chat/docs/sdk/flutter/stream_chat_flutter/stream_channel_list_view/)
+- [StreamMessageInput](https://getstream.io/chat/docs/sdk/flutter/stream_chat_flutter/stream_message_input/)
+- [StreamMessageListView](https://getstream.io/chat/docs/sdk/flutter/stream_chat_flutter/stream_message_list_view/)
+- [StreamMessageWidget](https://getstream.io/chat/docs/sdk/flutter/stream_chat_flutter/stream_message_widget/)
+- [StreamChatTheme](https://getstream.io/chat/docs/sdk/flutter/stream_chat_flutter/stream_chat_and_theming/)
+- ...
+
+### Customizing styles
+
+The Flutter SDK comes with a fully designed set of widgets that you can customize to fit with your application style and typography.
+Changing the theme of Chat widgets works in a very similar way that `MaterialApp` and `Theme` do.
+
+Out of the box, all chat widgets use their default styling, and there are two ways to change the styling:
+
+  1. Initialize the `StreamChatTheme` from your existing `MaterialApp` style
+  ```dart
+  class MyApp extends StatelessWidget {
+    final StreamChatClient client;
+
+    MyApp(this.client);
+
+    @override
+    Widget build(BuildContext context) {
+      final theme = ThemeData(
+        primarySwatch: Colors.green,
+      );
+
+      return MaterialApp(
+        theme: theme,
+        builder: (context, child) => StreamChat(
+         child: child,
+         client: client,
+         streamChatThemeData: StreamChatThemeData.fromTheme(theme),
+        ),
+        home: ChannelListPage(),
+        );
+    }
+  }
+  ```
+
+  2. Construct a custom theme and provide all the customizations needed
+  ```dart
+  class MyApp extends StatelessWidget {
+    final StreamChatClient client;
+
+    MyApp(this.client);
+
+    @override
+    Widget build(BuildContext context) {
+      final theme = ThemeData(
+        primarySwatch: Colors.green,
+      );
+
+      return MaterialApp(
+        theme: theme,
+        builder: (context, child) => StreamChat(
+         child: child,
+         client: client,
+         streamChatThemeData: StreamChatThemeData.fromTheme(theme).copyWith(
+            ownMessageTheme: MessageTheme(
+            messageBackgroundColor: Colors.black,
+            messageText: TextStyle(
+              color: Colors.white,
+            ),
+            avatarTheme: AvatarTheme(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            ),
+         ),
+        ),
+        home: ChannelListPage(),
+        );
+    }
+  }
+  ```
+  
+### Offline storage 
+
+To add data persistence you can extend the class `ChatPersistenceClient` and pass an instance to the `StreamChatClient`.
+
+```dart
+class CustomChatPersistentClient extends ChatPersistenceClient {
+...
+}
+
+final client = StreamChatClient(
+  apiKey ?? kDefaultStreamApiKey,
+  logLevel: Level.INFO,
+)..chatPersistenceClient = CustomChatPersistentClient();
+```
+
+We provide an official persistent client in the (stream_chat_persistence)[https://pub.dev/packages/stream_chat_persistence] package.
+
+```dart
+import 'package:stream_chat_persistence/stream_chat_persistence.dart';
+
+final chatPersistentClient = StreamChatPersistenceClient(
+  logLevel: Level.INFO,
+  connectionMode: ConnectionMode.background,
+);
+
+final client = StreamChatClient(
+  apiKey ?? kDefaultStreamApiKey,
+  logLevel: Level.INFO,
+)..chatPersistenceClient = chatPersistentClient;
+```
+
+## Contributing
+
+We welcome code changes that improve this library or fix a problem,
+please make sure to follow all best practices and add tests if applicable before submitting a Pull Request on GitHub.
+We are pleased to merge your code into the official repository.
+Make sure to sign our [Contributor License Agreement (CLA)](https://docs.google.com/forms/d/e/1FAIpQLScFKsKkAJI7mhCr7K9rEIOpqIDThrWxuvxnwUq2XkHyG154vQ/viewform) first.
+See our license file for more details.
