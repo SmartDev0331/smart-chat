@@ -39,7 +39,10 @@ dependencies:
   share_plus: ^6.3.0
   shimmer: ^2.0.0
   stream_chat_flutter_core:
-    path: ./packages/stream_chat_flutter_core
+    git:
+      url: https://github.com/theiskaa/stream-chat-flutter
+      ref: stream_chat_flutter_core
+
   synchronized: ^3.0.0
   thumblr: ^0.0.4
   url_launcher: ^6.1.0
